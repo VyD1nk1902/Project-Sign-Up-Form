@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-Up Form</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="background">
+        <div class="img-sidebar">
+          <img src="./assets/img/odin-lined.png" alt="#" />
+          <h1 class="sidebar-title">ODIN</h1>
+        </div>
+        <p class="img-credit">Photo by <u>Halie West</u> on <u>Unsplash</u></p>
+      </div>
+
+      <div class="content-right">
+        <header>
+          <h1 class="header-Desc">
+            This is not a real online service! You know you need something like this in your life to help you realize
+            your deepest dreams. Sign up now to get started.
+          </h1>
+          <h1 class="header-Desc">You know you want to.</h1>
+        </header>
+
+        <form>
+          <h1 class="form-title">Let's Do This!</h1>
+          <ul class="input-field">
+            <li>
+              <label for="first-name">FIRST NAME</label>
+              <input
+                type="text"
+                pattern="^[A-Za-zÀ-ỹà-ỹ' \-]{2,30}$"
+                title="Please enter 2–30 alphabetic characters only."
+                id="first-name"
+                name="first-name"
+                maxlength="20"
+                required
+              />
+            </li>
+            <li>
+              <label for="last-name">LAST NAME</label>
+              <input
+                type="text"
+                pattern="^[A-Za-zÀ-ỹà-ỹ' \-]{2,30}$"
+                title="Please enter 2–30 alphabetic characters only."
+                id="last-name"
+                name="last-name"
+                maxlength="20"
+                required
+              />
+            </li>
+            <li>
+              <label for="email">EMAIL</label>
+              <input
+                type="email"
+                pattern="^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$"
+                title="example@email.com"
+                id="email"
+                name="email"
+                required
+              />
+            </li>
+            <li>
+              <label for="phone">PHONE NUMBER</label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                min="9"
+                max="12"
+                pattern="^(^\d{10}$)|(^\d{3}-\d{3}-\d{4}$)|(^\d{3}
+                  \d{3}
+                  \d{4}$)|(^\d{3}\.\d{3}\.\d{4}$)"
+                required
+              />
+            </li>
+            <li>
+              <label for="password">PASSWORD *</label>
+              <input type="password" id="password" name="password" required />
+            </li>
+            <li>
+              <label for="confirm-password">CONFIRM PASSWORD *</label>
+              <input type="password" id="confirm-password" name="confirm-password" required />
+            </li>
+          </ul>
+        </form>
+
+        <footer>
+          <button class="btn">Create Account</button>
+          <p>Already have an account? <a href="#" class="login">Log in</a></p>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const btn = document.querySelector(".btn");
+      const password = document.querySelector("#password");
+      const confirmPassword = document.querySelector("#confirm-password");
+      const form = document.querySelector("form");
+      function validatePassword() {
+        if (confirmPassword.value === "") {
+          confirmPassword.reportValidity();
+        } else if (password.value != confirmPassword.value) {
+          confirmPassword.setCustomValidity("Password Don't Match. Try Again");
+        } else {
+          confirmPassword.setCustomValidity("");
+        }
+      }
+
+      btn.addEventListener("click", (e) => {
+        validatePassword();
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          confirmPassword.reportValidity();
+          password.reportValidity();
+        }
+      });
+    </script>
+  </body>
+</html>
